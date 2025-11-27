@@ -59,10 +59,3 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
-      - name: Dokploy Deployment
-        uses: ahmedabdou14/dokploy-deploy-gha@1.0.0
-        with:
-          auth_token: ${{ secrets.DOKPLOY_AUTH_TOKEN }}
-          application_id: ${{ secrets.DOKPLOY_APPLICATION_ID }}
-          dokploy_url: ${{ secrets.DOKPLOY_URL }}
