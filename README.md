@@ -1,4 +1,5 @@
 # sigau-tileserver
+[![Publish Docker image](https://github.com/JuanLiz/sigau-tileserver/actions/workflows/publish.yml/badge.svg)](https://github.com/JuanLiz/sigau-tileserver/actions/workflows/publish.yml)
 
 English | [Español](./README.es.md)
 
