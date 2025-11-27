@@ -6,8 +6,6 @@ Pipeline para generar y servir **vector tiles (MBTiles)** del **Censo de Arbolad
 
 👉 **Demo en vivo:** [https://tileserver.juanliz.com](https://tileserver.juanliz.com)
 
----
-
 ## Características
 
 | Dataset | Descripción | Rango de zoom |
@@ -15,8 +13,6 @@ Pipeline para generar y servir **vector tiles (MBTiles)** del **Censo de Arbolad
 | `sigau.mbtiles` | Puntos individuales de árboles | 12–18 |
 | `sigau-clustered.mbtiles` | Datos de árboles agrupados | 8–15 |
 | `localities.mbtiles` | Polígonos de localidades de Bogotá | 0–18 |
-
----
 
 ## Inicio Rápido
 
@@ -29,8 +25,6 @@ Elige la opción que mejor se adapte a tus necesidades:
 | **C. Tiles pre-generados** | Servir los MBTiles incluidos directamente | Node.js o Tileserver-GL |
 | **D. Generación manual** | Personalizar parámetros o usar datos actualizados | GDAL, Tippecanoe, Tileserver-GL |
 
----
-
 ## Opción A – Descargar la imagen
 
 La forma más rápida de comenzar. Descarga la imagen pre-construida desde GitHub Container Registry:
@@ -42,11 +36,16 @@ docker run -p 8080:8080 ghcr.io/juanliz/sigau-tileserver:latest
 
 Luego abre [http://localhost:8080](http://localhost:8080).
 
----
-
 ## Opción B – Construir Docker Localmente
 
-Construye la imagen tú mismo:
+El Dockerfile hará:
+
+1. Descargar los datasets
+2. Convertirlos a EPSG:4326
+3. Generar MBTiles con Tippecanoe
+4. Servirlos con Tileserver-GL
+
+Construye la imagen tú mismo localmente:
 
 ```bash
 docker build -t sigau-tileserver .
@@ -54,8 +53,6 @@ docker run -p 8080:8080 sigau-tileserver
 ```
 
 Luego abre [http://localhost:8080](http://localhost:8080).
-
----
 
 ## Opción C – Servir Tiles Pre-generados
 
@@ -74,8 +71,6 @@ tileserver-gl data/
 ```
 
 Esta es una opción ligera si ya tienes los archivos MBTiles.
-
----
 
 ## Opción D – Generación Manual
 
@@ -159,8 +154,6 @@ Copia los archivos `.mbtiles` generados a tu directorio `data/` y ejecuta:
 npx tileserver-gl data/
 ```
 
----
-
 ## Fuentes de Datos
 
 | Dataset | Fuente | Licencia |
@@ -175,8 +168,6 @@ El servicio REST de SIGAU [https://sigau.ideca.gov.co/arcgis/rest/services/Arbol
 Además, el servicio impone un límite de 2000 registros por petición, por lo que recuperar el conjunto completo requiere paginación o subdivisión espacial. Devuelve geometrías puntuales (WKID 4686) con un conjunto amplio de atributos, pero no ofrece mecanismos para el teselado espacial ni para el cacheado de tiles vectoriales.
 
 Por tanto, cualquier aplicación que dependa directamente de este endpoint necesita implementar estrategias adicionales —particionado espacial, cachés locales y consultas optimizadas— para evitar tiempos de carga elevados y un número excesivo de peticiones. En la práctica, esto hace que el servicio no sea adecuado para la entrega en tiempo real de datos de alta densidad sin una capa intermedia de optimización.
-
----
 
 ## Licencia
 

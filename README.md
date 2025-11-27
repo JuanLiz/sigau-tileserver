@@ -6,8 +6,6 @@ Pipeline for generating and serving **vector tiles (MBTiles)** of Bogotá's **Ur
 
 👉 **Live demo:** [https://tileserver.juanliz.com](https://tileserver.juanliz.com)
 
----
-
 ## Features
 
 | Dataset | Description | Zoom range |
@@ -15,8 +13,6 @@ Pipeline for generating and serving **vector tiles (MBTiles)** of Bogotá's **Ur
 | `sigau.mbtiles` | Individual tree points | 12–18 |
 | `sigau-clustered.mbtiles` | Pre-clustered tree data | 8–15 |
 | `localities.mbtiles` | Bogotá locality polygons | 0–18 |
-
----
 
 ## Quick Start
 
@@ -29,8 +25,6 @@ Choose the option that best fits your needs:
 | **C. Pre-built tiles** | Serve the included MBTiles directly | Node.js or Tileserver-GL |
 | **D. Manual generation** | Customize parameters or use fresh data | GDAL, Tippecanoe, Tileserver-GL |
 
----
-
 ## Option A – Pull image
 
 The fastest way to get started. Pull the pre-built image from GitHub Container Registry:
@@ -42,11 +36,16 @@ docker run -p 8080:8080 ghcr.io/juanliz/sigau-tileserver:latest
 
 Then open [http://localhost:8080](http://localhost:8080).
 
----
-
 ## Option B – Build Docker Locally
 
-Build the image yourself locally:
+The Dockerfile will:
+
+1. Downloads the datasets
+2. Converts them to EPSG:4326
+3. Generates MBTiles via Tippecanoe
+4. Serves them with Tileserver-GL
+
+Build the image yourself locally.
 
 ```bash
 docker build -t sigau-tileserver .
@@ -54,8 +53,6 @@ docker run -p 8080:8080 sigau-tileserver
 ```
 
 Then open [http://localhost:8080](http://localhost:8080).
-
----
 
 ## Option C – Serve Pre-built Tiles
 
@@ -74,8 +71,6 @@ tileserver-gl data/
 ```
 
 This is a lightweight option if you already have the MBTiles files.
-
----
 
 ## Option D – Manual Generation
 
@@ -159,8 +154,6 @@ Copy the generated `.mbtiles` files to your `data/` directory and run:
 npx tileserver-gl data/
 ```
 
----
-
 ## Data Sources
 
 | Dataset | Source | License |
@@ -168,13 +161,9 @@ npx tileserver-gl data/
 | Bogotá Localities | [IDECA](https://www.ideca.gov.co/recursos/mapas/localidad-bogota-dc) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | Urban Tree Census | [Datos Abiertos Bogotá](https://datosabiertos.bogota.gov.co/dataset/censo-arbolado-urbano) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 
----
-
 ## Why not use the SIGAU REST service directly?
 
 The REST service is provided by SIGAU at the following endpoint: [https://sigau.ideca.gov.co/arcgis/rest/services/ArboladoUrbano/FeatureServer/0](https://sigau.ideca.gov.co/arcgis/rest/services/ArboladoUrbano/FeatureServer/0). It operates as an ArcGIS Feature Layer (version 10.81) rather than a tileserver. This setup means that data must be retrieved through direct queries to the endpoint, which poses performance constraints given the large number of tree-point geometries for Bogotá. The service enforces a maximum record limit (2000 features per request), requiring either multiple paginated requests or spatial subdivisions to retrieve the full dataset. It returns point geometries (WKID 4686) with a broad attribute set, but lacks mechanisms for efficient spatial tiling or caching of vector tiles. As a result, any application relying on this service must implement complex strategies for spatial partitioning, local caching, and optimized querying to avoid excessive load times and numerous requests, since the service is not designed to support high-density real-time data delivery directly.
-
----
 
 ## License
 
