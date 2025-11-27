@@ -15,7 +15,7 @@ Pipeline for generating and serving **vector tiles (MBTiles)** of Bogotá's **Ur
 | `localities.mbtiles` | Bogotá locality polygons | 0–18 |
 
 > [!IMPORTANT]  
-> The tileserver exposes properties and attributes exactly as provided by the original sources. No additional modifications are made to the data's attributes; for full details on attributes, schemas, and licenses, consult the data sources listed in the "Data Sources" section.
+> The tileserver exposes properties and attributes exactly as provided by the original sources. No additional modifications are made to the data's attributes; for full details on attributes, schemas, and licenses, consult the data sources listed in the [Data Sources](https://github.com/JuanLiz/sigau-tileserver?tab=readme-ov-file#data-sources) section.
 
 ## Quick Start
 

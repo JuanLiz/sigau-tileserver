@@ -15,7 +15,7 @@ Pipeline para generar y servir **vector tiles (MBTiles)** del **Censo de Arbolad
 | `localities.mbtiles` | Polígonos de localidades de Bogotá | 0–18 |
 
 > [!IMPORTANT]  
-> El tileserver expone las propiedades y atributos tal cual los proveen las fuentes originales. No se realizan modificaciones adicionales a las características de los datos; para detalles completos de atributos, esquemas y licencias, consulta las fuentes listadas en la sección "Fuentes de Datos".
+> El tileserver expone las propiedades y atributos tal cual los proveen las fuentes originales. No se realizan modificaciones adicionales a las características de los datos; para detalles completos de atributos, esquemas y licencias, consulta las fuentes listadas en la sección [Fuentes de Datos](https://github.com/JuanLiz/sigau-tileserver/blob/master/README.es.md#fuentes-de-datos).
 
 ## Inicio Rápido
 
