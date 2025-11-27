@@ -166,7 +166,7 @@ npx tileserver-gl data/
 
 ## ¿Por qué no usar el servicio REST de SIGAU directamente?
 
-El servicio REST de SIGAU [https://sigau.ideca.gov.co/arcgis/rest/services/ArboladoUrbano/FeatureServer/0](https://sigau.ideca.gov.co/arcgis/rest/services/ArboladoUrbano/FeatureServer/0) funciona como una capa de entidades de ArcGIS (v. 10.81), no como un tileserver. Esto implica que los datos se obtienen mediante consultas puntuales al endpoint en lugar de solicitar tiles vectoriales pre-generados, lo que dificulta la entrega eficiente de grandes volúmenes de puntos.
+El servicio REST de SIGAU  [https://sigau.jbb.gov.co/arcgis/rest/services/IDECA/CensoArbol/MapServer/0](https://sigau.jbb.gov.co/arcgis/rest/services/IDECA/CensoArbol/MapServer/0) funciona como una capa de entidades de ArcGIS (v. 10.81), no como un tileserver. Esto implica que los datos se obtienen mediante consultas puntuales al endpoint en lugar de solicitar tiles vectoriales pre-generados, lo que dificulta la entrega eficiente de grandes volúmenes de puntos.
 
 Además, el servicio impone un límite de 2000 registros por petición, por lo que recuperar el conjunto completo requiere paginación o subdivisión espacial. Devuelve geometrías puntuales (WKID 4686) con un conjunto amplio de atributos, pero no ofrece mecanismos para el teselado espacial ni para el cacheado de tiles vectoriales.
 
