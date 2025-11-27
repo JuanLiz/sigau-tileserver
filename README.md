@@ -14,6 +14,9 @@ Pipeline for generating and serving **vector tiles (MBTiles)** of Bogotá's **Ur
 | `sigau-clustered.mbtiles` | Pre-clustered tree data | 8–15 |
 | `localities.mbtiles` | Bogotá locality polygons | 0–18 |
 
+> [!IMPORTANT]  
+> The tileserver exposes properties and attributes exactly as provided by the original sources. No additional modifications are made to the data's attributes; for full details on attributes, schemas, and licenses, consult the data sources listed in the "Data Sources" section.
+
 ## Quick Start
 
 Choose the option that best fits your needs:
