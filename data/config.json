@@ -1,0 +1,22 @@
+{
+  "options": {
+    "paths": {
+      "root": "",
+      "mbtiles": "/data"
+    },
+    "serveAllStyles": true,
+    "serveAllFonts": true,
+    "serveStaticMaps": true
+  },
+  "data": {
+    "sigau": {
+      "mbtiles": "sigau.mbtiles"
+    },
+    "sigau-clustered": {
+      "mbtiles": "sigau-clustered.mbtiles"
+    },
+    "localities": {
+      "mbtiles": "localities.mbtiles"
+    }
+  }
+}
